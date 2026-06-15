@@ -3,14 +3,15 @@
 **Contribution Number:** [1]  
 **Student:** [Christian Guardiola]  
 **Issue:** [[GitHub issue link](https://github.com/defold/defold/issues/5687)]  
-**Status:** [Phase I]
+**Status:** [Phase II]
 
 ---
 
 ## Why I Chose This Issue
 
 [1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
-
+Improving HTTP cache is an important lesson to improve efficiency for an engine. My learning goal for this issue is to develop a working solution for the Defold engine,
+while being supported by AI. If successful, both the engine and I will benefit. 
 ---
 
 ## Understanding the Issue
