@@ -59,24 +59,32 @@ The client processes headers using primitive string lookups (`strstr`) target-lo
 
 ### Analysis
 
-[Your analysis of the root cause - what's causing the issue?]
+The underlying limitation stems from structural omissions within both the data models and string tokenizers. The CacheEntry object lacks tracking attributes for holding explicit calendar expirations or functional constraint markers. To fix this, the engine needs an expanded parsing pipeline that safely processes multiple string date formats without risking runtime stability across target execution environments.
 
 ### Proposed Solution
 
-[High-level description of your fix approach]
+Add a robust date utility, ParseHttpDate, inside the network lifecycle flow to cleanly transform various web timestamp expressions into standardized Unix time_t values. Update the core CacheEntry storage model to maintain these values alongside explicit boolean flags for no-store and no-cache. Finally, adjust the engine’s decision loop (IsCacheFresh) to execute sequential priority validations matching RFC criteria.
 
 ### Implementation Plan
 
 Using UMPIRE framework (adapted):
 
-**Understand:** [Restate the problem]
+**Understand:** Upgrade dlib's underlying HTTP layer to support Expires, no-cache, no-store, and must-revalidate functionalities, ensuring correct header hierarchy.
 
-**Match:** [What similar patterns/solutions exist in the codebase?]
+**Match:** Mirror the pattern currently employed for processing max-age values and ETag string parameters.
 
 **Plan:** [Step-by-step implementation plan]
-1. [Modify file X to do Y]
-2. [Add function Z]
-3. [Update tests]
+  1. Build a static helper utility ParseHttpDate() inside http_client.cpp to correctly interpret RFC 1123, RFC 850, and ANSI C date layouts using strptime.
+  
+  2. Implement an enhanced configuration extractor (ParseCacheControl) to parse behavioral flags.
+  
+  3. Expand the CacheEntry struct definition within http_cache.cpp to include fields for m_ExpiresAt, m_NoCache, and m_NoStore.
+  
+  4. Modify IsCacheFresh() to assess parameters sequentially: checking max-age boundaries first, then falling back to m_ExpiresAt.
+  
+  5. Short-circuit storage operations inside http_cache.cpp if a no-store instruction is encountered.
+  
+  6. Introduce automated test coverage loops into test_httpcache.cpp.
 
 **Implement:** [Link to your branch/commits as you work]
 
