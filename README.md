@@ -42,7 +42,7 @@ The client processes headers using primitive string lookups (`strstr`) target-lo
 [Notes on setting up your local development environment - challenges you faced, how you solved them]
 1. Downloading MSVC C++ toolchain
 2. Wiring up PowerShell environment variables so the build scripts could actually find the compilers.
-3.
+3. Ignoring Java so that we can focus on the tests supported by C++.
 4. Tracking down and independently compiling the missing testmain.lib dependency so our HTTP cache test suite would link properly.
 Gauging between AI usage, and analyzing how to balance personal understanding and supplemented work.
 
