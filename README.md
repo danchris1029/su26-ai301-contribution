@@ -92,6 +92,7 @@ Using UMPIRE framework (adapted):
   6. Introduce automated test coverage loops into test_httpcache.cpp.
 
 **Implement:** [Link to your branch/commits as you work]
+[https://github.com/danchris1029/defold/blob/dev/engine/dlib/src/dlib/http/http_parsedate.cpp](https://github.com/danchris1029/defold/commit/f6d3d4dfb8f257b3b1ed0afb6b53c6c548f48b75)
 
 **Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
 
@@ -103,7 +104,7 @@ Using UMPIRE framework (adapted):
 
 ### Unit Tests
 
-- [ ] Test case 1: [Description]
+- [ ] Test case 1: Testing with different date formats.
 - [ ] Test case 2: [Description]
 - [ ] Test case 3: [Description]
 
